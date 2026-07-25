@@ -841,6 +841,22 @@
         box-shadow: none;
         transform: translate(5px, 5px);
       }
+      .btn-send:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .contact-status {
+        margin-top: 0.8rem;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        min-height: 1.2em;
+      }
+      .contact-status.error {
+        color: var(--red);
+      }
+      .contact-status.success {
+        color: var(--cyan);
+      }
 
       footer {
         background: var(--navy);
@@ -1053,10 +1069,11 @@
           </div>
           <div class="skill-tags">
             <span class="skill-tag">React.js</span>
+            <span class="skill-tag">TypeScript</span>
             <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Next.js</span>
             <span class="skill-tag">HTML5</span>
             <span class="skill-tag">CSS3</span>
-            <span class="skill-tag">Next.js</span>
             <span class="skill-tag">3D.js</span>
           </div>
         </div>
@@ -1067,11 +1084,9 @@
           <div class="skill-tags">
             <span class="skill-tag">Node.js</span>
             <span class="skill-tag">Express.js</span>
-            <span class="skill-tag">Python</span>
             <span class="skill-tag">Java</span>
-            <span class="skill-tag">GoLang</span>
-            <span class="skill-tag">C#</span>
             <span class="skill-tag">C++</span>
+            <span class="skill-tag">GoLang</span>
             <span class="skill-tag">.NET</span>
           </div>
         </div>
@@ -1084,6 +1099,7 @@
             <span class="skill-tag">MySQL</span>
             <span class="skill-tag">SQL</span>
             <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">PostgreSQL</span>
           </div>
         </div>
         <div class="skill-category reveal">
@@ -1111,21 +1127,24 @@
       <div class="projects-grid">
         <div class="project-card reveal">
           <div class="project-num">01</div>
-          <div class="project-title">Discuss — Forum App</div>
+          <div class="project-title">SpendSQL — Text-to-SQL Spending Tracker</div>
           <p class="project-desc">
-            A web application where users engage in discussions by posting,
-            commenting, and replying in a hierarchical tree structure that
-            clearly shows parent-child comment relationships.
+            An expense tracker where a local LLM (Ollama + LLaMA 3.2) turns
+            plain-English questions into SQL. A custom guard enforces
+            SELECT-only, user-scoped queries, run on a read-only DB user for
+            defense-in-depth, with an automatic self-repair retry on invalid SQL.
           </p>
           <div class="project-stack">
             <span class="project-tech">React.js</span>
             <span class="project-tech">Node.js</span>
             <span class="project-tech">Express.js</span>
-            <span class="project-tech">MongoDB</span>
+            <span class="project-tech">MySQL</span>
+            <span class="project-tech">Ollama/LLaMA 3.2</span>
+            <span class="project-tech">Docker</span>
           </div>
           <div class="project-links">
             <a
-              href="https://github.com/Aman-kumar001"
+              href="https://github.com/Aman-kumar001/Text-to-sql"
               class="project-link"
               target="_blank"
               >GitHub ↗</a
@@ -1134,28 +1153,6 @@
         </div>
         <div class="project-card reveal">
           <div class="project-num">02</div>
-          <div class="project-title">Algorithm Visualizer</div>
-          <p class="project-desc">
-            An interactive web app that brings algorithms to life — users can
-            watch multiple sorting and searching algorithms execute step-by-step
-            with animated visuals.
-          </p>
-          <div class="project-stack">
-            <span class="project-tech">React.js</span>
-            <span class="project-tech">HTML</span>
-            <span class="project-tech">CSS</span>
-          </div>
-          <div class="project-links">
-            <a
-              href="https://github.com/Aman-kumar001"
-              class="project-link"
-              target="_blank"
-              >GitHub ↗</a
-            >
-          </div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-num">03</div>
           <div class="project-title">Baat-e — Chat System</div>
           <p class="project-desc">
             A secure real-time chat app that creates private channels by
@@ -1169,7 +1166,41 @@
           </div>
           <div class="project-links">
             <a
-              href="https://github.com/Aman-kumar001"
+              href="https://chat-system-chi-two.vercel.app/"
+              class="project-link"
+              target="_blank"
+              >Live Demo ↗</a
+            >
+            <a
+              href="https://github.com/Aman-kumar001/chat-system"
+              class="project-link"
+              target="_blank"
+              >GitHub ↗</a
+            >
+          </div>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-num">03</div>
+          <div class="project-title">Algorithm Visualizer</div>
+          <p class="project-desc">
+            An interactive web app that brings algorithms to life — users can
+            watch multiple sorting and searching algorithms execute step-by-step
+            with animated visuals.
+          </p>
+          <div class="project-stack">
+            <span class="project-tech">React.js</span>
+            <span class="project-tech">HTML</span>
+            <span class="project-tech">CSS</span>
+          </div>
+          <div class="project-links">
+            <a
+              href="https://graph-search-viz.netlify.app/"
+              class="project-link"
+              target="_blank"
+              >Live Demo ↗</a
+            >
+            <a
+              href="https://github.com/Aman-kumar001/graph-search-visualizer"
               class="project-link"
               target="_blank"
               >GitHub ↗</a
@@ -1390,19 +1421,24 @@
           <div class="contact-form">
             <div class="form-row">
               <div class="form-group">
-                <input type="text" placeholder="Your Name" />
+                <input type="text" id="contact-name" placeholder="Your Name" />
               </div>
               <div class="form-group">
-                <input type="email" placeholder="Your Email" />
+                <input type="email" id="contact-email" placeholder="Your Email" />
               </div>
             </div>
             <div class="form-group">
-              <input type="text" placeholder="Subject" />
+              <input type="text" id="contact-subject" placeholder="Subject" />
             </div>
             <div class="form-group">
-              <textarea rows="6" placeholder="Your message..."></textarea>
+              <textarea
+                id="contact-message"
+                rows="6"
+                placeholder="Your message..."
+              ></textarea>
             </div>
-            <button class="btn-send">Send Message ✦</button>
+            <button class="btn-send" id="btn-send">Send Message ✦</button>
+            <p id="contact-status" class="contact-status"></p>
           </div>
         </div>
       </div>
